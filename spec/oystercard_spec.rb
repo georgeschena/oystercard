@@ -26,6 +26,23 @@ describe Oystercard do
     expect(oystercard.fare).to eq(3.20)
   end
 
+  it "Charges the max fair if you dont tap out" do
+    oystercard.tap_in("Hammersmith")
+
+    oystercard.calculate_fare
+
+    expect(oystercard.fare).to eq(3.20)
+  end
+
+  it "Returns the balance after the trip" do
+    oystercard.tap_in("Hammersmith")
+    oystercard.tap_out("Wimbledon")
+
+    oystercard.calculate_fare
+
+    expect(oystercard.balance).to eq(27.75)
+  end
+
   context "Travelling through London" do
     it "Travelling in any three zones " do
       oystercard.tap_in("Holborn")
@@ -68,23 +85,6 @@ describe Oystercard do
       oystercard.calculate_fare
 
       expect(oystercard.fare).to eq(2.25)
-    end
-
-    it "Charges the max fair if you dont tap out" do
-      oystercard.tap_in("Hammersmith")
-
-      oystercard.calculate_fare
-
-      expect(oystercard.fare).to eq(3.20)
-    end
-
-    it "Returns the balance after the trip" do
-      oystercard.tap_in("Hammersmith")
-      oystercard.tap_out("Wimbledon")
-
-      oystercard.calculate_fare
-
-      expect(oystercard.balance).to eq(27.75)
     end
   end
 

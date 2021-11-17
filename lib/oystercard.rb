@@ -30,7 +30,6 @@ class Oystercard
       @fare = 3.00
     end
 
-
     @balance = @balance - @fare
   end
 
@@ -43,7 +42,6 @@ class Oystercard
     @tapped_out_station.delete(1) if @tapped_out_station.length > 1
 
     zone_diff = (@tapped_in_station.first - @tapped_out_station.first).abs
-
 
     if zone_diff == 0
       true
