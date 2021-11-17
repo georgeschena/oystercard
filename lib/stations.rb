@@ -8,6 +8,5 @@ class Stations
     }
 
     stations[station]
-
   end
 end
